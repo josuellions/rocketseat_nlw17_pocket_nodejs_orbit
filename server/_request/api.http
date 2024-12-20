@@ -1,0 +1,32 @@
+### Variables
+@urlbase = http://localhost:3333
+
+# @name status-connection
+GET {{urlbase}}
+
+###
+# @name goals-create
+POST {{urlbase}}/goals/create
+Content-Type: application/json
+
+{
+  "title": "Não usar celular quando for dormir",
+  "desiredWeeklyFrequency": 7
+}
+
+###
+# @name goals-pending
+GET {{urlbase}}/goals/pending-goals
+
+###
+# @name goals-completion
+POST {{urlbase}}/goals/completions
+Content-Type: application/json
+
+{
+  "goalId": "svbi6n1rgl6wob92zili10i7"
+}
+
+### 
+# @name summary
+GET {{urlbase}}/summary
