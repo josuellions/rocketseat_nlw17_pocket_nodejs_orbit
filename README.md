@@ -89,7 +89,7 @@ Utilizando as tecnologias:
   ┃ ┣ 📜 package-lock.json
   ┃ ┣ 📜 package.json
   ┃ ┗ 📜 tsconfig.json
-  ┗ README.md
+  ┗ 📜 README.md
 
 ```
 
@@ -137,9 +137,9 @@ npm run services:down
 
 - - Postgres (DBMS - Banco Dados relacional)
 
-- - - node-pg-migrate (Migrations)
+- - - DrizzleORM (Migrations)
 
-- - - pg (Query/Consultas)
+- - - drizzle-orm (Query/Consultas)
 
 ```bash
 npm run services:db:migrate
