@@ -8,7 +8,7 @@
 
 #### About
 
-Desenvolvimento acadêmico de uma aplicação back-end em Node.js, conceitos de API REST, gerenciamento metas pessoais diária de atividades e bem-estar com interação.
+Desenvolvimento acadêmico de uma aplicação back-end em Node.js, conceitos de API REST, gerenciamento metas pessoais diária de atividades e bem-estar com interação, com registro de metas e progresso semanal.
 
 Utilizando as tecnologias:
 
@@ -25,7 +25,7 @@ Utilizando as tecnologias:
 
 <br/>
 
-#### Projeto: Orbit - Rocketseat NLW17 Pocket Nodejs
+#### Projeto: in.orbit - Rocketseat NLW17 Pocket Nodejs
 
 </br>
 
@@ -59,18 +59,37 @@ Utilizando as tecnologias:
   ┣ 📂 server
   ┃ ┣ 📂 _request
   ┃ ┃ ┗ 📜 api.http
+  ┃ ┣ 📂 .vscode
+  ┃ ┃ ┗ 📜 settings.json
   ┃ ┣ 📂 src
   ┃ ┃ ┣ 📂 db
   ┃ ┃ ┃ ┣ 📂 migrations
-  ┃ ┃ ┃ ┗ 📜 index.js
+  ┃ ┃ ┃ ┣ 📜 index.js
+  ┃ ┃ ┃ ┣ 📜 schema.js
+  ┃ ┃ ┃ ┗ 📜 seed.js
   ┃ ┃ ┣ 📂 functions
+  ┃ ┃ ┃ ┣ 📜 create-goal-completion.js
+  ┃ ┃ ┃ ┣ 📜 create-goal.js
+  ┃ ┃ ┃ ┣ 📜 get-week-pending-goals.ts
+  ┃ ┃ ┃ ┗ 📜 get-week-summary.js
   ┃ ┃ ┣ 📂 http
   ┃ ┃ ┃ ┗ 📜 server.ts
   ┃ ┃ ┣ 📂 routes
+  ┃ ┃ ┃ ┣ 📜 create-goal-completion.js
+  ┃ ┃ ┃ ┣ 📜 create-goal.js
+  ┃ ┃ ┃ ┣ 📜 get-week-pending-goals.ts
+  ┃ ┃ ┃ ┗ 📜 get-week-summary.js
   ┃ ┃ ┗ 📜 env.ts
-  ┃ ┣ 📜 package.json
+  ┃ ┣ 📂 tests
   ┃ ┣ 📜 .env
-  ┃ ┗ 📂 tests
+  ┃ ┣ 📜 .gitignore
+  ┃ ┣ 📜 biome.json
+  ┃ ┣ 📜 docker-compose.yml
+  ┃ ┣ 📜 drizzle.config.ts
+  ┃ ┣ 📜 package-lock.json
+  ┃ ┣ 📜 package.json
+  ┃ ┗ 📜 tsconfig.json
+  ┗ README.md
 
 ```
 
@@ -85,6 +104,54 @@ Utilizando as tecnologias:
 #### 🧰 Dependências
 
 ---
+
+- Docker
+- - Docker Compose
+- - - Criar e inicializar
+
+```bash
+docker compose --file docker-compose.yaml -d up
+docker ps
+```
+
+ou
+
+```bash
+npm run services:up
+```
+
+- - - Para ou excluir
+
+```bash
+docker compose --file  docker-compose.yaml down
+docker ps -a
+```
+
+ou
+
+```bash
+npm run services:down
+```
+
+- Banco Dados
+
+- - Postgres (DBMS - Banco Dados relacional)
+
+- - - node-pg-migrate (Migrations)
+
+- - - pg (Query/Consultas)
+
+```bash
+npm run services:db:migrate
+```
+
+ou
+
+- - - Para popular tabelas com dados iniciais
+
+```bash
+npm run services:db:seed
+```
 
 <br/>
 
@@ -101,6 +168,26 @@ Utilizando as tecnologias:
 #### 🔥 Como executar
 
 ---
+
+- Realize o clone ou baixe o projeto localmente.
+
+- - Instalar ou atualizar os pacotes e dependências
+
+```bash
+npm install
+```
+
+- - Para executar o projeto em modo de desenvolvimento.
+
+```bash
+npm run dev
+```
+
+- - Para executar o projeto em modo de produção e homologação.
+
+```bash
+npm run start
+```
 
 <br/>
 
