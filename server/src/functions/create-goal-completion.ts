@@ -1,25 +1,25 @@
-import { and, count, gte, lte, eq, sql } from "drizzle-orm";
+import { and, count, gte, lte, eq, sql } from 'drizzle-orm'
 
-import { goals, goalsCompletions } from "../db/schema";
+import { goals, goalsCompletions } from '../db/schema'
 
-import { db } from "../db";
-import dayjs from "dayjs";
+import { db } from '../db'
+import dayjs from 'dayjs'
 
 interface CreateGoalCompletionRequest {
-  goalId: string;
+  goalId: string
 }
 
 export async function createGoalCompletion({
   goalId,
 }: CreateGoalCompletionRequest) {
-  const firstDayOfWeek = dayjs().startOf("week").toDate();
-  const lastDayOfWeek = dayjs().endOf("week").toDate();
+  const firstDayOfWeek = dayjs().startOf('week').toDate()
+  const lastDayOfWeek = dayjs().endOf('week').toDate()
 
-  const goalCompletionCounts = db.$with("goal_completion_counts").as(
+  const goalCompletionCounts = db.$with('goal_completion_counts').as(
     db
       .select({
         goalId: goalsCompletions.goalId,
-        completionCount: count(goalsCompletions.id).as("completionCount"),
+        completionCount: count(goalsCompletions.id).as('completionCount'),
       })
       .from(goalsCompletions)
       .where(
@@ -30,36 +30,36 @@ export async function createGoalCompletion({
         )
       )
       .groupBy(goalsCompletions.goalId)
-  );
+  )
 
   const result = await db
     .with(goalCompletionCounts)
     .select({
       desiredWeeklyFrequency: goals.desiredWeeklyFrequency,
       completionCount:
-        sql/*sql*/ `COALESCE(${goalCompletionCounts.completionCount}, 0)`.mapWith(
+        sql /*sql*/`COALESCE(${goalCompletionCounts.completionCount}, 0)`.mapWith(
           Number
         ),
     })
     .from(goals)
     .leftJoin(goalCompletionCounts, eq(goalCompletionCounts.goalId, goals.id))
     .where(eq(goals.id, goalId))
-    .limit(1);
+    .limit(1)
 
-  const { completionCount, desiredWeeklyFrequency } = result[0];
+  const { completionCount, desiredWeeklyFrequency } = result[0]
 
   if (completionCount >= desiredWeeklyFrequency) {
-    throw new Error("Goal already completed this week!");
+    throw new Error('Goal already completed this week!')
   }
 
   const resultInsert = await db
     .insert(goalsCompletions)
     .values({ goalId })
-    .returning();
+    .returning()
 
-  const goalCompletion = resultInsert[0];
+  const goalCompletion = resultInsert[0]
 
   return {
     goalCompletion,
-  };
+  }
 }

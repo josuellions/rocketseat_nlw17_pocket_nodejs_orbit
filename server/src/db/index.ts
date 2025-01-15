@@ -1,9 +1,9 @@
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
+import { drizzle } from 'drizzle-orm/postgres-js'
+import postgres from 'postgres'
 
-import * as schema from "./schema";
+import * as schema from './schema'
 
-import { env } from "../env";
+import { env } from '../env'
 
-export const client = postgres(env.POSTGRES_DATABASE_URL);
-export const db = drizzle(client, { schema, logger: true });
+export const client = postgres(env.POSTGRES_DATABASE_URL)
+export const db = drizzle(client, { schema, logger: true })
