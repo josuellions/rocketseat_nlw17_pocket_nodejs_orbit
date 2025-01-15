@@ -13,6 +13,7 @@ import { createGoalRoute } from '../routes/create-goal'
 import { createGoalCompletionRoute } from '../routes/create-goal-completion'
 import { getWeekPendingGoalsRoute } from '../routes/get-week-pending-goals'
 import { getWeekSummaryRoute } from '../routes/get-week-summary'
+import { authenticateFromGithubRoute } from '../routes/authenticate-from-github'
 
 const port = 3333
 const host = '0.0.0.0'
@@ -39,10 +40,11 @@ app.register(fastifySwaggerUi, {
   routePrefix: '/docs',
 })
 
-app.register(createGoalRoute)
+app.register(authenticateFromGithubRoute)
 app.register(createGoalCompletionRoute)
 app.register(getWeekPendingGoalsRoute)
 app.register(getWeekSummaryRoute)
+app.register(createGoalRoute)
 
 app
   .listen({

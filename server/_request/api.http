@@ -31,3 +31,15 @@ Content-Type: application/json
 # @name summary
 GET {{urlbase}}/summary
 
+###
+# @name auth
+POST {{urlbase}}/auth/github
+Content-Type: application/json
+
+{
+  "code": "GITHUB_CODE_RESPONSE"
+}
+
+###
+# @name auth
+GET https://github.com/login/oauth/authorize?client_id=GITHUB_CLIENT_ID&redirect_uri=http://localhost:3000/auth/github/callback
