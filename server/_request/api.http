@@ -1,5 +1,5 @@
 ### Variables
-@urlbase = http://localhost:3333
+@urlbase = http://192.168.7.11:3333
 
 # @name status-connection
 GET {{urlbase}}

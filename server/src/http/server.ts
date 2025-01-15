@@ -12,6 +12,7 @@ import { getWeekSummaryRoute } from "../routes/get-week-summary";
 import fastifyCors from "@fastify/cors";
 
 const port = 3333;
+const host = "0.0.0.0";
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 app.register(fastifyCors, {
@@ -29,6 +30,7 @@ app.register(getWeekSummaryRoute);
 app
   .listen({
     port,
+    host,
   })
   .then(() => {
     console.log(`>> Orbit HTTP server running port: ${port}`);
