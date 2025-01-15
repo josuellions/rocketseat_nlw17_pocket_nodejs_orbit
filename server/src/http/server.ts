@@ -14,6 +14,8 @@ import { createGoalCompletionRoute } from '../routes/create-goal-completion'
 import { getWeekPendingGoalsRoute } from '../routes/get-week-pending-goals'
 import { getWeekSummaryRoute } from '../routes/get-week-summary'
 import { authenticateFromGithubRoute } from '../routes/authenticate-from-github'
+import fastifyJwt from '@fastify/jwt'
+import { env } from '../env'
 
 const port = 3333
 const host = '0.0.0.0'
@@ -21,6 +23,10 @@ const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.register(fastifyCors, {
   origin: '*',
+})
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
 })
 
 app.setValidatorCompiler(validatorCompiler)

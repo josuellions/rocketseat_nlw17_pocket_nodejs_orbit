@@ -19,17 +19,17 @@ export const authenticateFromGithubRoute: FastifyPluginAsyncZod = async app => {
         },
       },
     },
-    async (request, replay) => {
+    async (request, reply) => {
       try {
         const { code } = request.body
 
         const { token } = await authenticateFromGithubCode({ code })
 
-        return replay.status(201).send({ token })
+        return reply.status(201).send({ token })
       } catch (err) {
         console.log(err)
 
-        return replay.status(400).send()
+        return reply.status(400).send()
       }
     }
   )

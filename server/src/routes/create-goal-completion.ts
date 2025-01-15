@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { createGoalCompletion } from '../functions/create-goal-completion'
+import { authenticateUserHook } from '../http/hooks/authenticate-user'
 
 export const createGoalCompletionRoute: FastifyPluginAsyncZod = async (
   app,
@@ -9,6 +10,7 @@ export const createGoalCompletionRoute: FastifyPluginAsyncZod = async (
   app.post(
     '/goals/completions',
     {
+      onRequest: [authenticateUserHook],
       schema: {
         tags: ['goals'],
         description: 'Complete a goal',
@@ -20,12 +22,12 @@ export const createGoalCompletionRoute: FastifyPluginAsyncZod = async (
         },
       },
     },
-    async (request, replay) => {
+    async (request, reply) => {
       const { goalId } = request.body
 
       await createGoalCompletion({ goalId })
 
-      return replay.status(201).send()
+      return reply.status(201).send()
     }
   )
 }
