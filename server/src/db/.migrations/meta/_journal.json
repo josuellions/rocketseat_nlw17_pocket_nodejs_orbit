@@ -15,6 +15,20 @@
       "when": 1734646568592,
       "tag": "0001_loving_strong_guy",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1736974786086,
+      "tag": "0002_shocking_madripoor",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1736974991289,
+      "tag": "0003_small_hammerhead",
+      "breakpoints": true
     }
   ]
 }
