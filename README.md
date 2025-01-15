@@ -27,6 +27,8 @@ Utilizando as tecnologias:
 
 #### Projeto: in.orbit - Rocketseat NLW17 Pocket Nodejs
 
+![iorbit_server_01](https://github.com/user-attachments/assets/39a41fa5-a154-4ba6-bd73-af398ea81672)
+
 </br>
 
 #### 📋 Sumário
