@@ -10,6 +10,15 @@
 
 Desenvolvimento acadêmico de uma aplicação back-end em Node.js, conceitos de API REST, gerenciamento metas pessoais diária de atividades e bem-estar com interação, com registro de metas e progresso semanal.
 
+- autenticação JWT
+- workflow de CI/CD
+- teste automatizado
+- documentação swagger
+- level por tarefas concluídas
+- progresso por tarefas concluídas
+- navegação de tarefas por semana
+- gamificação por quantidade tarefas concluídas
+
 Utilizando as tecnologias:
 
 - Nodejs
@@ -19,6 +28,7 @@ Utilizando as tecnologias:
 - ZOD
 - Dayjs
 - CORS
+- Fastify/Swagger
 - Parallel Drive / CUID2
 - DrizzleORM + PostgreSQL,
 - Docker e Zod para validação de dados.
@@ -42,6 +52,7 @@ Utilizando as tecnologias:
 - [♻️ Variáveis de Ambiente](#-variáveis-de-ambiente)
 - [🔥 Como executar](#-como-executar)
 - [📑 Padronização](#-padronização)
+- [📔 Documentação](#-documentação)
 - [🧪 Testes](#-testes)
 - [⚙️ CI/CD](#-CI/CD)
 - [🚀 Build](#-build)
@@ -194,6 +205,13 @@ npm run start
 <br/>
 
 #### 📑 Padronização
+
+---
+
+#### 📔 Documentação
+- Para acessar documentação, executar aplicação, acessa pelo navegado rota.
+
+`http://localhost:3333/docs`
 
 ---
 
