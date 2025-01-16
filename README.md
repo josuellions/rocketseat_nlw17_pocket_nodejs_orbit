@@ -28,6 +28,7 @@ Utilizando as tecnologias:
 - ZOD
 - Dayjs
 - CORS
+- Vitest
 - Fastify/JWT
 - Fastify/Swagger
 - Parallel Drive / CUID2
