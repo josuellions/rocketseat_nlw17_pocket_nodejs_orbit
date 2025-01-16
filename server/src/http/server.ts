@@ -16,6 +16,7 @@ import { getWeekSummaryRoute } from '../routes/get-week-summary'
 import { authenticateFromGithubRoute } from '../routes/authenticate-from-github'
 import fastifyJwt from '@fastify/jwt'
 import { env } from '../env'
+import { getProfileRoute } from '../routes/get-profile'
 
 const port = 3333
 const host = '0.0.0.0'
@@ -51,6 +52,7 @@ app.register(createGoalCompletionRoute)
 app.register(getWeekPendingGoalsRoute)
 app.register(getWeekSummaryRoute)
 app.register(createGoalRoute)
+app.register(getProfileRoute)
 
 app
   .listen({
