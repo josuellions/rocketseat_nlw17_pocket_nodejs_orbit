@@ -1,33 +1,20 @@
-import { eq } from 'drizzle-orm'
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect } from 'vitest'
 
-import { db } from '../../src/db'
-import { users } from '../../src/db/schema'
 import { getUser } from '../../src/functions/get-user'
+import { makeUser } from '../factories/make-user'
 
 describe('get user', () => {
-  const userId = 'john-doe'
-  const userAvatarUrl = 'https://github.com/josuellions.png'
-
-  beforeEach(async () => {
-    await db.delete(users).where(eq(users.id, userId))
-  })
-
   it('should be able to get a user', async () => {
-    await db.insert(users).values({
-      id: userId,
-      avatarUrl: userAvatarUrl,
-      externalAccountId: 123456789,
-    })
+    const user = await makeUser()
 
-    const result = await getUser({ userId })
+    const result = await getUser({ userId: user.id })
 
     expect(result).toEqual({
       user: {
-        id: userId,
-        name: null,
-        email: null,
-        avatarUrl: userAvatarUrl,
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        avatarUrl: user.avatarUrl,
       },
     })
   })
