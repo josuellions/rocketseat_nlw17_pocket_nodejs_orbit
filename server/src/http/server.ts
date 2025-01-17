@@ -17,6 +17,7 @@ import { authenticateFromGithubRoute } from '../routes/authenticate-from-github'
 import fastifyJwt from '@fastify/jwt'
 import { env } from '../env'
 import { getProfileRoute } from '../routes/get-profile'
+import { getUserExperienceAndLevelRoute } from '../routes/get-user-experience-and-level'
 
 const port = 3333
 const host = '0.0.0.0'
@@ -46,7 +47,7 @@ app.register(fastifySwagger, {
 app.register(fastifySwaggerUi, {
   routePrefix: '/docs',
 })
-
+app.register(getUserExperienceAndLevelRoute)
 app.register(authenticateFromGithubRoute)
 app.register(createGoalCompletionRoute)
 app.register(getWeekPendingGoalsRoute)

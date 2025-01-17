@@ -29,6 +29,13 @@
       "when": 1736974991289,
       "tag": "0003_small_hammerhead",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1737130164005,
+      "tag": "0004_fuzzy_echo",
+      "breakpoints": true
     }
   ]
 }

@@ -6,8 +6,10 @@ const envSchema = z.object({
     .optional()
     .default('production'),
   POSTGRES_DATABASE_URL: z.string().url(),
-  GITHUB_CLIENT_ID: z.string(),
+  EXPERIENCE_FACTOR: z.coerce.number(),
+  BASE_EXPERIENCE: z.coerce.number(),
   GITHUB_CLIENT_SECRET: z.string(),
+  GITHUB_CLIENT_ID: z.string(),
   JWT_SECRET: z.string(),
 })
 
