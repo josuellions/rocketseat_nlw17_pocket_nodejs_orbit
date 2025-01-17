@@ -4,7 +4,7 @@ import z from 'zod'
 import { authenticateUserHook } from '../http/hooks/authenticate-user'
 import { getUserLevelAndExperience } from '../functions/get-user-level-and-experience'
 
-export const getUserExperienceAndLevelRoute: FastifyPluginAsyncZod =
+export const getUserLevelAndExperienceRoute: FastifyPluginAsyncZod =
   async app => {
     app.get(
       '/profile/gamification',
