@@ -71,39 +71,85 @@ Utilizando as tecnologias:
 
 ```txt
   📦 root
-  ┣ 📂 server
-  ┃ ┣ 📂 _request
-  ┃ ┃ ┗ 📜 api.http
-  ┃ ┣ 📂 .vscode
-  ┃ ┃ ┗ 📜 settings.json
-  ┃ ┣ 📂 src
-  ┃ ┃ ┣ 📂 db
-  ┃ ┃ ┃ ┣ 📂 migrations
-  ┃ ┃ ┃ ┣ 📜 index.js
-  ┃ ┃ ┃ ┣ 📜 schema.js
-  ┃ ┃ ┃ ┗ 📜 seed.js
-  ┃ ┃ ┣ 📂 functions
-  ┃ ┃ ┃ ┣ 📜 create-goal-completion.js
-  ┃ ┃ ┃ ┣ 📜 create-goal.js
-  ┃ ┃ ┃ ┣ 📜 get-week-pending-goals.ts
-  ┃ ┃ ┃ ┗ 📜 get-week-summary.js
-  ┃ ┃ ┣ 📂 http
-  ┃ ┃ ┃ ┗ 📜 server.ts
-  ┃ ┃ ┣ 📂 routes
-  ┃ ┃ ┃ ┣ 📜 create-goal-completion.js
-  ┃ ┃ ┃ ┣ 📜 create-goal.js
-  ┃ ┃ ┃ ┣ 📜 get-week-pending-goals.ts
-  ┃ ┃ ┃ ┗ 📜 get-week-summary.js
-  ┃ ┃ ┗ 📜 env.ts
-  ┃ ┣ 📂 tests
-  ┃ ┣ 📜 .env
-  ┃ ┣ 📜 .gitignore
-  ┃ ┣ 📜 biome.json
-  ┃ ┣ 📜 docker-compose.yml
-  ┃ ┣ 📜 drizzle.config.ts
-  ┃ ┣ 📜 package-lock.json
-  ┃ ┣ 📜 package.json
-  ┃ ┗ 📜 tsconfig.json
+  ┣ 📂 .github
+  ┃ ┗ 📂 workflows
+  ┃   ┗ 📜 ci.yml
+  ┃ 
+  ┣ 📂 .vscode
+  ┃ ┗ 📜 settings.json
+  ┃ 
+  ┣ 📂 docker
+  ┃ ┗ 📜 setup-test-database.sql
+  ┃
+  ┣ 📂 _request
+  ┃ ┗ 📜 api.http
+  ┃
+  ┣ 📂 src
+  ┃ ┣ 📂 @types
+  ┃ ┃ ┗  📜 fastify-jwt.d.js
+  ┃ ┃
+  ┃ ┣ 📂 db
+  ┃ ┃ ┣ 📂 migrations
+  ┃ ┃ ┣ 📜 index.js
+  ┃ ┃ ┣ 📜 schema.js
+  ┃ ┃ ┗ 📜 seed.js
+  ┃ ┃
+  ┃ ┣ 📂 functions
+  ┃ ┃ ┣ 📜 authenticate-from-github-code.ts
+  ┃ ┃ ┣ 📜 create-goal-completion.js
+  ┃ ┃ ┣ 📜 create-goal.js
+  ┃ ┃ ┣ 📜 get-user-level-and-experience.ts
+  ┃ ┃ ┣ 📜 get-user.ts
+  ┃ ┃ ┣ 📜 get-week-pending-goals.ts
+  ┃ ┃ ┗ 📜 get-week-summary.js
+  ┃ ┃
+  ┃ ┣ 📂 http
+  ┃ ┃ ┣ 📂 hooks
+  ┃ ┃ ┃ ┗ 📜 authenticate-user.ts  
+  ┃ ┃ ┗ 📜 server.ts
+  ┃ ┃
+  ┃ ┣ 📂 modules
+  ┃ ┃ ┣ 📜 auth.ts
+  ┃ ┃ ┣ 📜 gamification.js
+  ┃ ┃ ┗ 📜 github-oauth.js
+  ┃ ┃
+  ┃ ┣ 📂 routes
+  ┃ ┃ ┣ 📜 authenticate-from-github.ts
+  ┃ ┃ ┣ 📜 create-goal-completion.js
+  ┃ ┃ ┣ 📜 create-goal.js
+  ┃ ┃ ┣ 📜 get-profile.ts
+  ┃ ┃ ┣ 📜 get-user-level-and-experience.ts
+  ┃ ┃ ┣ 📜 get-week-pending-goals.ts
+  ┃ ┃ ┗ 📜 get-week-summary.js
+  ┃ ┃
+  ┃ ┗ 📜 env.ts
+  ┃ 
+  ┣ 📂 tests
+  ┃ ┣ 📂 factories
+  ┃ ┃ ┣ 📜 make-goal-completion.ts
+  ┃ ┃ ┣ 📜 make-goal.js
+  ┃ ┃ ┗ 📜 make-user.js
+  ┃ ┃
+  ┃ ┗ 📂 functions
+  ┃   ┣ 📜 authenticate-from-github-code.spec.ts
+  ┃   ┣ 📜 create-goal-completion.spec.js
+  ┃   ┣ 📜 create-goal.spec.js
+  ┃   ┣ 📜 gamification.spec.js
+  ┃   ┣ 📜 get-user-level-and-experience.spec.ts
+  ┃   ┣ 📜 get-user.spec.ts
+  ┃   ┣ 📜 get-week-pending-goals.spec.ts
+  ┃   ┗ 📜 get-week-summary.spec.js
+  ┃
+  ┣ 📜 .env
+  ┣ 📜 .env.example
+  ┣ 📜 .env.test
+  ┣ 📜 .gitignore
+  ┣ 📜 biome.json
+  ┣ 📜 docker-compose.yml
+  ┣ 📜 drizzle.config.ts
+  ┣ 📜 package-lock.json
+  ┣ 📜 package.json
+  ┣ 📜 tsconfig.json
   ┗ 📜 README.md
 
 ```
